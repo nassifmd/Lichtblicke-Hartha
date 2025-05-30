@@ -32,7 +32,7 @@ const ProtectedForm = () => {
     e.preventDefault();
     setStatus('Sending...');
     try {
-      const res = await fetch('http://localhost:5000/send-email', {
+      const res = await fetch('https://lichtblicke-hartha-1.onrender.com/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
