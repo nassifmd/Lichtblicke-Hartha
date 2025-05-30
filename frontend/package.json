@@ -2,7 +2,6 @@
   "name": "tda",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://lichtblicke-hartha-1.onrender.com",
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.7",
     "@tailwindcss/vite": "^4.1.7",
@@ -44,9 +43,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-    "engines": {
-    "node": ">=18 <=20"
   }
-
 }
