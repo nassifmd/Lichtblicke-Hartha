@@ -4,11 +4,18 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const PORT = 10000;
+const PORT = 3000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
+// Root route to fix "Cannot GET /"
+app.get('/', (req, res) => {
+  res.send('Server is running.');
+});
+
+// Email sending route
 app.post('/send-email', async (req, res) => {
   const { project, date, name, phone, email, comments } = req.body;
 
@@ -16,17 +23,17 @@ app.post('/send-email', async (req, res) => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.strato.de',
     port: 465,
-    secure: true, // true for 465, false for 587
+    secure: true, // true for port 465
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    }
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
   });
 
   const mailOptions = {
-    from: '"Project Form" <nassif.dauda@tda-hr.de>', // Replace with your email
-    to: 'nassif.dauda@tda-hr.de', // Replace with your email	
-    replyTo: email,       // Let replies go to the user's email
+    from: '"Project Form" <nassif.dauda@tda-hr.de>', // Replace if needed
+    to: 'nassif.dauda@tda-hr.de', // Replace if needed
+    replyTo: email,
     subject: 'New Project Form Submission',
     html: `
       <h2>New Project Submission</h2>
@@ -48,4 +55,7 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
