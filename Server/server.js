@@ -31,8 +31,8 @@ app.post('/send-email', async (req, res) => {
   });
 
   const mailOptions = {
-    from: '"Project Form" <nassif.dauda@tda-hr.de>', // Replace if needed
-    to: 'nassif.dauda@tda-hr.de', // Replace if needed
+    from: '"Lichtblicke-Hartha Project Form" <info@tda-hr.de>',
+    to: 'info@tda-hr.de',
     replyTo: email,
     subject: 'New Project Form Submission',
     html: `
